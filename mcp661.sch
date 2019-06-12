@@ -774,6 +774,8 @@ Created by Upverter.com</description>
 <part name="GND2" library="MySparkFun" library_urn="urn:adsk.eagle:library:10539731" deviceset="GND" device=""/>
 <part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2"/>
 <part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2"/>
+<part name="P+3" library="MySparkFun" library_urn="urn:adsk.eagle:library:10539731" deviceset="VCC" device=""/>
+<part name="GND3" library="MySparkFun" library_urn="urn:adsk.eagle:library:10539731" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -786,8 +788,8 @@ Created by Upverter.com</description>
 <instance part="VR1" gate="G$0" x="35.56" y="68.58" smashed="yes" rot="R90">
 <attribute name="NAME" x="31.496" y="70.866" size="2.54" layer="95" rot="R90" align="top-left"/>
 </instance>
-<instance part="P+1" gate="1" x="38.1" y="83.82" smashed="yes">
-<attribute name="VALUE" x="37.084" y="87.376" size="1.778" layer="96"/>
+<instance part="P+1" gate="1" x="38.1" y="86.36" smashed="yes">
+<attribute name="VALUE" x="37.084" y="89.916" size="1.778" layer="96"/>
 </instance>
 <instance part="P+2" gate="1" x="73.66" y="88.9" smashed="yes">
 <attribute name="VALUE" x="72.644" y="92.456" size="1.778" layer="96"/>
@@ -806,43 +808,48 @@ Created by Upverter.com</description>
 <attribute name="NAME" x="128.27" y="84.455" size="1.778" layer="95"/>
 <attribute name="VALUE" x="128.27" y="68.58" size="1.778" layer="96"/>
 </instance>
+<instance part="P+3" gate="1" x="109.22" y="88.9" smashed="yes">
+<attribute name="VALUE" x="108.204" y="92.456" size="1.778" layer="96"/>
+</instance>
+<instance part="GND3" gate="1" x="114.3" y="66.04" smashed="yes">
+<attribute name="VALUE" x="111.76" y="63.5" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="VREF" class="0">
 <segment>
-<pinref part="VR1" gate="G$0" pin="WIPER"/>
-<pinref part="U1" gate="G$0" pin="VIN-"/>
-<wire x1="45.72" y1="76.2" x2="53.34" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="76.2" x2="63.5" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="-5.08" y1="81.28" x2="25.4" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="81.28" x2="25.4" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="55.88" x2="53.34" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="55.88" x2="53.34" y2="76.2" width="0.1524" layer="91"/>
-<junction x="53.34" y="76.2"/>
 <pinref part="JP3" gate="A" pin="2"/>
+<label x="17.78" y="81.28" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$0" pin="VIN-"/>
+<pinref part="VR1" gate="G$0" pin="WIPER"/>
+<wire x1="45.72" y1="76.2" x2="63.5" y2="76.2" width="0.1524" layer="91"/>
 <label x="48.26" y="76.2" size="1.778" layer="95"/>
+<label x="78.74" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VCC" class="0">
 <segment>
 <pinref part="VR1" gate="G$0" pin="CW"/>
 <pinref part="P+1" gate="1" pin="VCC"/>
-<wire x1="38.1" y1="83.82" x2="27.94" y2="83.82" width="0.1524" layer="91"/>
-<junction x="38.1" y="83.82"/>
-<wire x1="27.94" y1="83.82" x2="27.94" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="27.94" y1="86.36" x2="-5.08" y2="86.36" width="0.1524" layer="91"/>
+<junction x="38.1" y="86.36"/>
+<wire x1="38.1" y1="86.36" x2="-5.08" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="JP3" gate="A" pin="4"/>
+<wire x1="38.1" y1="86.36" x2="38.1" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$0" pin="VSS"/>
 <pinref part="P+2" gate="1" pin="VCC"/>
+</segment>
+<segment>
 <pinref part="JP4" gate="A" pin="1"/>
 <wire x1="132.08" y1="81.28" x2="109.22" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="81.28" x2="109.22" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="88.9" x2="73.66" y2="88.9" width="0.1524" layer="91"/>
-<junction x="73.66" y="88.9"/>
+<pinref part="P+3" gate="1" pin="VCC"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -857,11 +864,12 @@ Created by Upverter.com</description>
 <segment>
 <pinref part="U1" gate="G$0" pin="VDD"/>
 <pinref part="GND2" gate="1" pin="GND"/>
+</segment>
+<segment>
 <pinref part="JP4" gate="A" pin="4"/>
 <wire x1="132.08" y1="73.66" x2="114.3" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="73.66" x2="114.3" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="114.3" y1="68.58" x2="73.66" y2="68.58" width="0.1524" layer="91"/>
-<junction x="73.66" y="68.58"/>
+<pinref part="GND3" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="IN" class="0">
